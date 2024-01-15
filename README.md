@@ -31,5 +31,5 @@ To interact with this contract, you can use [Remix IDE](https://remix.ethereum.o
 Before deploying the contract, ensure the Chainlink VRF subscription is set up and funded. For testing on the Fuji Testnet, deploy the contract using the Remix IDE or a deployment script.
 
 ## Notes
-- The contract uses a simplified tesnet native token wager for testnet purposes, in the mainnet it will be changed to $COQ wagering
+- The contract uses a simplified testnet native token wager for testnet purposes, in the mainnet it will be changed to $COQ wagering
 - The contract's current configuration uses the Avalanche Fuji Testnet key hash and VRFCoordinator address.
