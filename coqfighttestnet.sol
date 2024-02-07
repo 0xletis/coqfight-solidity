@@ -27,6 +27,9 @@ contract CoqFightTestnet is VRFConsumerBaseV2, ConfirmedOwner {
     // COMMENTED FOR REMIX TESTING PURPOSE WITH NATIVE TOKEN
     // uint256 public fee = 0; 
 
+    // Game bot address that calls CompleteGame function when a game is joined 
+    address public botAddress = 0xc5b407677BFaf9f5a1523ac54E630C046aFe3B49;
+
     // Your subscription ID.
     uint64 s_subscriptionId;
 
@@ -191,13 +194,13 @@ contract CoqFightTestnet is VRFConsumerBaseV2, ConfirmedOwner {
     }
 
     // Function to complete a game and determine the winner using Chainlink VRF randomness
-    function _completeGame(uint256 _gameId, uint256[] memory _randomWords) internal {
+    function completeGame(uint256 _gameId, uint256[] memory _randomWords) external {
         Game storage game = games[_gameId];
         require(!game.completed, "Game is already completed");
+        require(msg.sender == botAddress,"Caller is not game bot");
 
-        // Use the random words to determine the winner
-        uint256 randomValue = uint256(keccak256(abi.encodePacked(_randomWords)));
-        game.winner = (randomValue % 2 == 0) ? game.player1 : game.player2;
+        // Use the random words to determine the winnerxw
+        game.winner = (_randomWords[0] % 2 == 0) ? game.player1 : game.player2;
         game.completed = true;
 
         // COMMENTED FOR REMIX TESTING PURPOSE WITH NATIVE TOKEN
@@ -241,6 +244,11 @@ contract CoqFightTestnet is VRFConsumerBaseV2, ConfirmedOwner {
     // Function to set callbackGasLimit of VRF in case its too low to be able to handle games
     function setCallback(uint32 _callbackGasLimit) external onlyOwner {
         callbackGasLimit = _callbackGasLimit;
+    }
+
+     // Function to set callbackGasLimit of VRF in case its too low to be able to handle games
+    function setBotAddress(address _botAddress) external onlyOwner {
+        botAddress = _botAddress;
     }
 
     // COMMENTED FOR REMIX TESTING PURPOSE WITH NATIVE TOKEN
@@ -296,13 +304,7 @@ contract CoqFightTestnet is VRFConsumerBaseV2, ConfirmedOwner {
         s_requests[_requestId].fulfilled = true;
         s_requests[_requestId].randomWords = _randomWords;
 
-        // Retrieve the game ID using the stored request ID
-        uint256 gameId = gameIdByRequestId[_requestId];
-
-        // Use the game ID to complete the game based on the received random words
-        // In the mainnet this call will be made by an automated script when RequestFulfilled() event
-        _completeGame(gameId, _randomWords);
-
+        // Bot is listening to the this event to completeGame
         emit RequestFulfilled(_requestId, _randomWords);
     }
 

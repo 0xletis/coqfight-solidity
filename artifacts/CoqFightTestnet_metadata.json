@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.22+commit.4fc1097e"
+		"version": "0.8.24+commit.e11b9ed9"
 	},
 	"language": "Solidity",
 	"output": {
@@ -211,6 +211,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "botAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -219,6 +232,24 @@
 					}
 				],
 				"name": "cancelGame",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_gameId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_randomWords",
+						"type": "uint256[]"
+					}
+				],
+				"name": "completeGame",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -434,6 +465,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_botAddress",
+						"type": "address"
+					}
+				],
+				"name": "setBotAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint32",
 						"name": "_callbackGasLimit",
 						"type": "uint32"
@@ -578,11 +622,11 @@
 			]
 		},
 		"coqfighttestnet.sol": {
-			"keccak256": "0x685921e6ae4b7b8ff07718409732c3f55fad7ffc6c7fa6d34cd3f359fbeaca8d",
+			"keccak256": "0xaf227213532b1bb2897d6988f0c48c492203589d433159bbcdc4ccdcc405e886",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2af32770e177161221c48584d7436df9c14337106420c99bcd54eeb63f5f768a",
-				"dweb:/ipfs/QmZrt1Db2PGb37xshziSqzAps1dvmadJHTzhjUcVS7yg4r"
+				"bzz-raw://b1fa13c93a61a822b13f0da7cd9adbfdfebdc16de9b8b3b1b7b5a4684d71afa8",
+				"dweb:/ipfs/QmcGghCg396dgGuYRAuLRrG1ACiZHDjPocsycvGFpDDW6b"
 			]
 		}
 	},
