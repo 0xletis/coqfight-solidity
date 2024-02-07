@@ -622,11 +622,11 @@
 			]
 		},
 		"coqfighttestnet.sol": {
-			"keccak256": "0x1d154a8b1686ccdf3e469790c1e6fcc3ed5a75623123942254c4d9cf3c817cc7",
+			"keccak256": "0xaf227213532b1bb2897d6988f0c48c492203589d433159bbcdc4ccdcc405e886",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6961c284532583ca684d8f3588eb886aad9b545c47304cc86d45722557c83116",
-				"dweb:/ipfs/QmYYgXz5CCMmqCm3TFYPpsYXPkCgjwoC9UNksRJHTzW4C6"
+				"bzz-raw://b1fa13c93a61a822b13f0da7cd9adbfdfebdc16de9b8b3b1b7b5a4684d71afa8",
+				"dweb:/ipfs/QmcGghCg396dgGuYRAuLRrG1ACiZHDjPocsycvGFpDDW6b"
 			]
 		}
 	},

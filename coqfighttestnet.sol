@@ -199,9 +199,7 @@ contract CoqFightTestnet is VRFConsumerBaseV2, ConfirmedOwner {
         require(!game.completed, "Game is already completed");
         require(msg.sender == botAddress,"Caller is not game bot");
 
-        // Use the random words to determine the winner
-        // No need to hash the number as its already random
-        //uint256 randomValue = uint256(keccak256(abi.encodePacked(_randomWords)));
+        // Use the random words to determine the winnerxw
         game.winner = (_randomWords[0] % 2 == 0) ? game.player1 : game.player2;
         game.completed = true;
 
@@ -306,13 +304,7 @@ contract CoqFightTestnet is VRFConsumerBaseV2, ConfirmedOwner {
         s_requests[_requestId].fulfilled = true;
         s_requests[_requestId].randomWords = _randomWords;
 
-        // HANDLED BY THE GAME BOT WHEN HE HEARD REQUESTFULFILLED NOW
-        // Retrieve the game ID using the stored request ID
-        //uint256 gameId = gameIdByRequestId[_requestId];
-
-        // Use the game ID to complete the game based on the received random words
-        //_completeGame(gameId, _randomWords);
-
+        // Bot is listening to the this event to completeGame
         emit RequestFulfilled(_requestId, _randomWords);
     }
 
